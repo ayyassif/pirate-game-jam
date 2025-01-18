@@ -1,0 +1,134 @@
+[gd_scene load_steps=19 format=3 uid="uid://dt5bldrc0mkj2"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
+[ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/Art/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_dmcjg"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_swmo2"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_tfvre"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgfao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uidkf"]
+atlas = ExtResource("1_61eog")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yinpp"]
+atlas = ExtResource("1_61eog")
+region = Rect2(0, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkm17"]
+atlas = ExtResource("1_61eog")
+region = Rect2(192, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3rae"]
+atlas = ExtResource("1_61eog")
+region = Rect2(384, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cch6a"]
+atlas = ExtResource("1_61eog")
+region = Rect2(576, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04l4i"]
+atlas = ExtResource("1_61eog")
+region = Rect2(768, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tr8k"]
+atlas = ExtResource("1_61eog")
+region = Rect2(960, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw5sq"]
+atlas = ExtResource("1_61eog")
+region = Rect2(1152, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1trt"]
+atlas = ExtResource("1_61eog")
+region = Rect2(1344, 1024, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w7ow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uidkf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yinpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkm17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3rae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cch6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04l4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tr8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw5sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1trt")
+}],
+"loop": true,
+"name": &"running",
+"speed": 8.0
+}]
+
+[sub_resource type="Resource" id="Resource_ebh32"]
+script = ExtResource("3_swmo2")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_emwxm"]
+radius = 3.68977
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_8ybj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fgfao")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.997002, 0, 0, 0, 0.997002, 0, 0, 0, 0.997002, 0, -0.997889, 0)
+offset = Vector2(0, 128.07)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_5w7ow")
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.952881
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.741016, 0.671488, 0, -0.671488, 0.741016, 0, 5.33758, 5.03877)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_tfvre")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.741016, 0.671488, 0, -0.671488, 0.741016, 0, 0.77159, 0)
+
+[node name="PhantomCamera3D" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.79982)
+script = ExtResource("2_dmcjg")
+tween_resource = SubResource("Resource_ebh32")
+
+[node name="ExploisionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExploisionArea"]
+shape = SubResource("CylinderShape3D_emwxm")
+
+[connection signal="body_entered" from="ExploisionArea" to="." method="_on_exploision_area_body_entered"]

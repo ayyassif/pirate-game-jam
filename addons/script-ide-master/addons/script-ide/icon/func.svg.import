@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://rni04cl446ov"
+path="res://.godot/imported/func.svg-c827e436c6601712df15543a29f415b0.image"
+
+[deps]
+
+source_file="res://addons/script-ide-master/addons/script-ide/icon/func.svg"
+dest_files=["res://.godot/imported/func.svg-c827e436c6601712df15543a29f415b0.image"]
+
+[params]
+
