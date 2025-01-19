@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bod64h88yncu5"]
 
-[ext_resource type="MeshLibrary" uid="uid://cafx8jshj0q7u" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
+[ext_resource type="MeshLibrary" uid="uid://btrw6baij85lo" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
-[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
+[ext_resource type="PackedScene" path="res://Scenes/camera.tscn" id="4_8pb8w"]
 
 [node name="TestMap" type="Node3D"]
 

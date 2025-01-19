@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="4_ne872"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
-[ext_resource type="PackedScene" uid="uid://bwv7mvixj0e4b" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
+[ext_resource type="PackedScene" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgfao"]
 

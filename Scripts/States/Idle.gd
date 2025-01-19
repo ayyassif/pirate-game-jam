@@ -4,12 +4,13 @@ class_name Idle
 func Enter():
 	sprite.play("Idle")
 	
-func Update(_delta: float):
-	if Input.get_vector("MoveDown","MoveLeft","MoveRight","MoveUp"):
-		print("hh");
+func _physics_Update(_delta: float):
+	if Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown")):
+		print("hh")
 		Transitioned.emit(self, "Walking")
-	player.velocity.x = 0.0
-	player.velocity.z = 0.0
+	else:
+		player.velocity.x = 0.0
+		player.velocity.z = 0.0
 
 func Exit():
 	pass
