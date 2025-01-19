@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqg6oe4asg63x"]
 
-[ext_resource type="Texture2D" uid="uid://ctjwh17rxlfao" path="res://Assets/Art/kenney_toon-characters-1/Zombie/Tilesheet/character_zombie_sheetHD.png" id="1_2o7rb"]
+[ext_resource type="Texture2D" uid="uid://ctjwh17rxlfao" path="res://Assets/kenney_toon-characters-1/Zombie/Tilesheet/character_zombie_sheetHD.png" id="1_2o7rb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afsix"]
 
