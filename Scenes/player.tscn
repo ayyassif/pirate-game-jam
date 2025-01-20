@@ -1,12 +1,57 @@
-[gd_scene load_steps=18 format=3 uid="uid://dt5bldrc0mkj2"]
+[gd_scene load_steps=42 format=3 uid="uid://dt5bldrc0mkj2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="4_ne872"]
+[ext_resource type="Script" path="res://Scripts/BombForms/BombStateMachine.gd" id="5_aiy7p"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
 [ext_resource type="PackedScene" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
+[ext_resource type="Texture2D" uid="uid://dsq48dwnqxfn1" path="res://Assets/kenney_toon-characters-1/Female adventurer/Tilesheet/character_femaleAdventurer_sheetHD.png" id="6_dgy37"]
+[ext_resource type="Script" path="res://Scripts/BombForms/Bang.gd" id="7_80yk5"]
+[ext_resource type="Texture2D" uid="uid://b2gcjdpp3hran" path="res://Assets/kenney_toon-characters-1/Male adventurer/Tilesheet/character_maleAdventurer_sheetHD.png" id="7_b1645"]
+[ext_resource type="Script" path="res://Scripts/BombForms/Alberto.gd" id="8_jbfcf"]
+[ext_resource type="Script" path="res://Scripts/BombForms/Bam.gd" id="9_xnlhq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgfao"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_emwxm"]
+radius = 3.68977
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m22di"]
+atlas = ExtResource("7_b1645")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq2st"]
+atlas = ExtResource("7_b1645")
+region = Rect2(0, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n71st"]
+atlas = ExtResource("7_b1645")
+region = Rect2(192, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1v8"]
+atlas = ExtResource("7_b1645")
+region = Rect2(384, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfvkp"]
+atlas = ExtResource("7_b1645")
+region = Rect2(576, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jsbn"]
+atlas = ExtResource("7_b1645")
+region = Rect2(768, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6x34"]
+atlas = ExtResource("7_b1645")
+region = Rect2(960, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsym5"]
+atlas = ExtResource("7_b1645")
+region = Rect2(1152, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2n6v"]
+atlas = ExtResource("7_b1645")
+region = Rect2(1344, 1024, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uidkf"]
 atlas = ExtResource("1_61eog")
@@ -44,14 +89,87 @@ region = Rect2(1152, 1024, 192, 256)
 atlas = ExtResource("1_61eog")
 region = Rect2(1344, 1024, 192, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3x78"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rox0u"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(0, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f45y0"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(192, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfymr"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(384, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ev2"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(576, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bngq4"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(768, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urdqk"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(960, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3p13"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(1152, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjp7q"]
+atlas = ExtResource("6_dgy37")
+region = Rect2(1344, 1024, 192, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5w7ow"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m22di")
+}],
+"loop": true,
+"name": &"AlbertoIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq2st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n71st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws1v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfvkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jsbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6x34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsym5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2n6v")
+}],
+"loop": true,
+"name": &"AlbertoWalking",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uidkf")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"BamIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -80,12 +198,46 @@ animations = [{
 "texture": SubResource("AtlasTexture_o1trt")
 }],
 "loop": true,
-"name": &"Walking",
+"name": &"BamWalking",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3x78")
+}],
+"loop": true,
+"name": &"BangIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rox0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f45y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfymr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2ev2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bngq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urdqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3p13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjp7q")
+}],
+"loop": true,
+"name": &"BangWalking",
+"speed": 5.0
 }]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_emwxm"]
-radius = 3.68977
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_8ybj4")
@@ -93,21 +245,14 @@ script = ExtResource("1_8ybj4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_fgfao")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.997002, 0, 0, 0, 0.997002, 0, 0, 0, 0.997002, 0, -0.997889, 0)
-offset = Vector2(0, 128.07)
-billboard = 2
-sprite_frames = SubResource("SpriteFrames_5w7ow")
-animation = &"Walking"
-autoplay = "Walking"
-
 [node name="ExploisionArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ExploisionArea"]
 shape = SubResource("CylinderShape3D_emwxm")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "sprite", "player") instance=ExtResource("6_a4wi6")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "BombMachine", "sprite", "player") instance=ExtResource("6_a4wi6")]
 initial_state = NodePath("Idle")
+BombMachine = NodePath("../BombMachine")
 sprite = NodePath("../AnimatedSprite3D")
 player = NodePath("..")
 
@@ -116,5 +261,25 @@ script = ExtResource("4_ne872")
 
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("5_deyuq")
+
+[node name="BombMachine" type="Node" parent="." node_paths=PackedStringArray("initial_bomb")]
+script = ExtResource("5_aiy7p")
+initial_bomb = NodePath("Bam")
+
+[node name="Bam" type="Node" parent="BombMachine"]
+script = ExtResource("9_xnlhq")
+
+[node name="Bang" type="Node" parent="BombMachine"]
+script = ExtResource("7_80yk5")
+
+[node name="Alberto" type="Node" parent="BombMachine"]
+script = ExtResource("8_jbfcf")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.997002, 0, 0, 0, 0.997002, 0, 0, 0, 0.997002, 0, -0.997889, 0)
+offset = Vector2(0, 128.07)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_5w7ow")
+animation = &"BangWalking"
 
 [connection signal="body_entered" from="ExploisionArea" to="." method="_on_exploision_area_body_entered"]
