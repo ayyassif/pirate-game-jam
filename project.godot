@@ -23,6 +23,10 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide-master/addons/script-ide/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 Target=""
@@ -69,3 +73,7 @@ AlbertoButton={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_3="Enemies"

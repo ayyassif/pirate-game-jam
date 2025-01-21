@@ -18,3 +18,7 @@ func Update(_delta: float):
 
 func _physics_Update(delta: float):
 	pass
+
+func detectAttack():
+	if Input.is_action_just_pressed("LeftClick"):
+		Transitioned.emit(self, "Attack")

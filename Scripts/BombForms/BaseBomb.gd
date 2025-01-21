@@ -3,6 +3,8 @@ class_name BaseBomb
 
 signal BombTransitioned
 
+@onready var player: CharacterBody3D = get_parent().player
+
 func update(delta: float) -> void:
 	switchBomb()
 

@@ -1,6 +1,11 @@
 extends Node
 
 @export var initial_bomb : BaseBomb
+@export var player: CharacterBody3D
+@export_category("All Explosions")
+@export var bam_explosion : PackedScene
+@export var bang_flash : PackedScene
+@export var alberto_smoke : PackedScene
 
 signal bombChanged
 

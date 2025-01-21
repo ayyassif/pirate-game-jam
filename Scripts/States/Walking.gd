@@ -11,6 +11,7 @@ func Exit():
 	pass
 
 func _physics_Update(delta: float):
+	detectAttack()
 	var raw_input: Vector2
 	raw_input = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))
 	if not raw_input:

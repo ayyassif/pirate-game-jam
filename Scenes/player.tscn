@@ -1,11 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://dt5bldrc0mkj2"]
+[gd_scene load_steps=47 format=3 uid="uid://dt5bldrc0mkj2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="4_ne872"]
 [ext_resource type="Script" path="res://Scripts/BombForms/BombStateMachine.gd" id="5_aiy7p"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
-[ext_resource type="PackedScene" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
+[ext_resource type="Script" path="res://Scripts/States/Attack.gd" id="5_n737a"]
+[ext_resource type="PackedScene" uid="uid://cpqegtqp1j6v2" path="res://Scenes/explosions/bamExplosion.tscn" id="6_0fcm2"]
+[ext_resource type="PackedScene" uid="uid://kwnstv2knt7h" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
 [ext_resource type="Texture2D" uid="uid://dsq48dwnqxfn1" path="res://Assets/kenney_toon-characters-1/Female adventurer/Tilesheet/character_femaleAdventurer_sheetHD.png" id="6_dgy37"]
 [ext_resource type="Script" path="res://Scripts/BombForms/Bang.gd" id="7_80yk5"]
 [ext_resource type="Texture2D" uid="uid://b2gcjdpp3hran" path="res://Assets/kenney_toon-characters-1/Male adventurer/Tilesheet/character_maleAdventurer_sheetHD.png" id="7_b1645"]
@@ -52,6 +54,18 @@ region = Rect2(1152, 1024, 192, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2n6v"]
 atlas = ExtResource("7_b1645")
 region = Rect2(1344, 1024, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh2eh"]
+atlas = ExtResource("1_61eog")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73ylr"]
+atlas = ExtResource("1_61eog")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fb4w"]
+atlas = ExtResource("1_61eog")
+region = Rect2(576, 0, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uidkf"]
 atlas = ExtResource("1_61eog")
@@ -166,6 +180,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uh2eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73ylr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fb4w")
+}],
+"loop": false,
+"name": &"BamAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uidkf")
 }],
 "loop": true,
@@ -262,9 +290,14 @@ script = ExtResource("4_ne872")
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("5_deyuq")
 
-[node name="BombMachine" type="Node" parent="." node_paths=PackedStringArray("initial_bomb")]
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("5_n737a")
+
+[node name="BombMachine" type="Node" parent="." node_paths=PackedStringArray("initial_bomb", "player")]
 script = ExtResource("5_aiy7p")
 initial_bomb = NodePath("Bam")
+player = NodePath("..")
+bam_explosion = ExtResource("6_0fcm2")
 
 [node name="Bam" type="Node" parent="BombMachine"]
 script = ExtResource("9_xnlhq")
@@ -280,6 +313,6 @@ transform = Transform3D(0.997002, 0, 0, 0, 0.997002, 0, 0, 0, 0.997002, 0, -0.99
 offset = Vector2(0, 128.07)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_5w7ow")
-animation = &"BangWalking"
+animation = &"BamAttack"
 
 [connection signal="body_entered" from="ExploisionArea" to="." method="_on_exploision_area_body_entered"]

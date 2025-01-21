@@ -5,6 +5,7 @@ func Enter():
 	sprite.play(bomb.name + "Idle")
 	
 func _physics_Update(_delta: float):
+	detectAttack()
 	if Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown")):
 		Transitioned.emit(self, "Walking")
 	else:

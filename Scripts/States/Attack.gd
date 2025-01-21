@@ -1,16 +1,9 @@
 extends State
 class_name Attack
 
-
-
 func Enter():
-	pass
-	
-func Exit():
-	pass
-
-func Update(_delta: float):
-	pass
-
-func _physics_Update(delta: float):
+	sprite.play(bomb.name + "Attack")
+	bomb.explode()
+	await get_tree().create_timer(1).timeout
+	Transitioned.emit(self, "Idle")
 	pass
