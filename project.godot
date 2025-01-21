@@ -77,3 +77,7 @@ AlbertoButton={
 [layer_names]
 
 3d_physics/layer_3="Enemies"
+
+[rendering]
+
+environment/volumetric_fog/volume_size=255

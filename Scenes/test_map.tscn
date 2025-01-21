@@ -1,41 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://bod64h88yncu5"]
+[gd_scene load_steps=9 format=3 uid="uid://bod64h88yncu5"]
 
-[ext_resource type="MeshLibrary" uid="uid://btrw6baij85lo" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
+[ext_resource type="MeshLibrary" uid="uid://8kk2mick72kl" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
-[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
-[ext_resource type="PackedScene" uid="uid://dmrx5njmbndx2" path="res://Assets/LeoAssets/Blocks/TestCube_2.1.glb" id="5_2frb6"]
-[ext_resource type="PackedScene" uid="uid://mshhklxkay21" path="res://Assets/LeoAssets/Blocks/TestCube_2.2.glb" id="6_3deqm"]
+[ext_resource type="PackedScene" path="res://Scenes/camera.tscn" id="4_8pb8w"]
+[ext_resource type="PackedScene" uid="uid://blqgn8pulr82h" path="res://Scenes/explosions/alberto_smoke.tscn" id="5_w0ito"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_2x31d"]
+
+[sub_resource type="Sky" id="Sky_jp1j5"]
+sky_material = SubResource("PhysicalSkyMaterial_2x31d")
+
+[sub_resource type="Environment" id="Environment_hbjh1"]
+background_mode = 2
+sky = SubResource("Sky_jp1j5")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [node name="TestMap" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_61fe2")
-cell_size = Vector3(0.5, 0.5, 0.5)
 collision_mask = 3
 data = {
-"cells": PackedInt32Array(5, 2, 2, 5, 65535, 2, 5, 65532, 2, 5, 65529, 2, 8, 65529, 2, 8, 65532, 2, 8, 65535, 2, 8, 2, 2, 11, 2, 2, 11, 65535, 2, 11, 65532, 2, 11, 65529, 2, 14, 65529, 3, 14, 65532, 2, 14, 65535, 2, 14, 2, 2, 65550, 0, 4, 131086, 65533, 4)
+"cells": PackedInt32Array(5, 2, 2, 5, 65535, 2, 5, 65532, 2, 5, 65529, 2, 8, 65529, 2, 8, 65532, 2, 8, 65535, 2, 8, 2, 2, 11, 2, 2, 11, 65535, 2, 11, 65532, 2, 11, 65529, 2, 14, 65529, 3, 14, 65532, 2, 14, 65535, 2, 14, 2, 2, 65550, 0, 4, 131086, 65533, 4, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65535, 65535, 0, 65534, 65535, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 0, 65535, 0, 65534, 65534, 0, 65534, 0, 0, 131069, 65534, 1, 131070, 65534, 1, 131071, 65534, 1, 65536, 65534, 1)
 }
-metadata/_editor_floor_ = Vector3(0, 2, 0)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_oulgh")]
-transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 7.47972, 2.73355, -2.8229)
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 3.95323, 3.3073, 1.49511)
 collision_layer = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.234718, 0.972064, 0, -0.972064, 0.234718, 0, 20.8491, 0)
+transform = Transform3D(1, 0, 0, 0, 0.234718, 0.972064, 0, -0.972064, 0.234718, 0, 18.78, 0)
 
 [node name="Target" parent="." instance=ExtResource("3_2pkk5")]
 transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 1.84774, 1.59874, -4.98636)
 
 [node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_8pb8w")]
-transform = Transform3D(1, 0.000118759, -0.000443004, -0.000118055, 0.999999, 0.00159339, 0.000443192, -0.00159334, 0.999999, 4.8956, 1.43705, -1.0488)
+transform = Transform3D(1, 0.000118759, -0.000443004, -0.000118055, 0.999999, 0.00159339, 0.000443192, -0.00159334, 0.999999, 0, 2.15617, 0)
 player = NodePath("../Player")
 min_distance = 5.0
 max_distance = 10.0
 
-[node name="TestCube_2_12" parent="." instance=ExtResource("5_2frb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4849, 1.58553, -1.36598)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hbjh1")
 
-[node name="TestCube_2_2" parent="." instance=ExtResource("6_3deqm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26244, 1.4625, -2.63103)
+[node name="AlbertoSmoke" parent="." instance=ExtResource("5_w0ito")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97381, 3.37544, 3.36423)
