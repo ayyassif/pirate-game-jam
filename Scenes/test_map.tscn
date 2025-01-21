@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bod64h88yncu5"]
+[gd_scene load_steps=7 format=3 uid="uid://bod64h88yncu5"]
 
 [ext_resource type="MeshLibrary" uid="uid://btrw6baij85lo" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
-[ext_resource type="PackedScene" path="res://Scenes/camera.tscn" id="4_8pb8w"]
+[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
+[ext_resource type="PackedScene" uid="uid://dmrx5njmbndx2" path="res://Assets/LeoAssets/Blocks/TestCube_2.1.glb" id="5_2frb6"]
+[ext_resource type="PackedScene" uid="uid://mshhklxkay21" path="res://Assets/LeoAssets/Blocks/TestCube_2.2.glb" id="6_3deqm"]
 
 [node name="TestMap" type="Node3D"]
 
@@ -31,3 +33,9 @@ transform = Transform3D(1, 0.000118759, -0.000443004, -0.000118055, 0.999999, 0.
 player = NodePath("../Player")
 min_distance = 5.0
 max_distance = 10.0
+
+[node name="TestCube_2_12" parent="." instance=ExtResource("5_2frb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4849, 1.58553, -1.36598)
+
+[node name="TestCube_2_2" parent="." instance=ExtResource("6_3deqm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26244, 1.4625, -2.63103)
