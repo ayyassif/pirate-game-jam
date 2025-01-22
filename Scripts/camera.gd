@@ -35,3 +35,4 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif Input.is_action_just_pressed("LeftClick"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pivot.position.y = player.position.y

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bod64h88yncu5"]
+[gd_scene load_steps=12 format=3 uid="uid://bod64h88yncu5"]
 
-[ext_resource type="MeshLibrary" uid="uid://btrw6baij85lo" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
+[ext_resource type="MeshLibrary" uid="uid://cjo1g1pj0adi2" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
 [ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
-[ext_resource type="PackedScene" path="res://Scenes/explosions/alberto_smoke.tscn" id="5_w0ito"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_mu4kn"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_ygdmn"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_33mw3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_2x31d"]
 
@@ -17,13 +19,19 @@ sky = SubResource("Sky_jp1j5")
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
+[sub_resource type="Resource" id="Resource_mkcfd"]
+script = ExtResource("7_33mw3")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="TestMap" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_61fe2")
 collision_mask = 3
 data = {
-"cells": PackedInt32Array(5, 2, 2, 5, 65535, 2, 5, 65532, 2, 5, 65529, 2, 8, 65529, 2, 8, 65532, 2, 8, 65535, 2, 8, 2, 2, 11, 2, 2, 11, 65535, 2, 11, 65532, 2, 11, 65529, 2, 14, 65529, 3, 14, 65532, 2, 14, 65535, 2, 14, 2, 2, 65550, 0, 4, 131086, 65533, 4, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65535, 65535, 0, 65534, 65535, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 0, 65535, 0, 65534, 65534, 0, 65534, 0, 0, 131069, 65534, 1, 131070, 65534, 1, 131071, 65534, 1, 65536, 65534, 1)
+"cells": PackedInt32Array(65550, 0, 4, 131086, 65533, 4, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65534, 65535, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 0, 65535, 0, 65534, 0, 0, 131069, 65534, 1, 131070, 65534, 1, 131071, 65534, 1, 65536, 65534, 1, 131069, 1, 5, 131068, 1, 6, 131070, 1, 1048580, 131069, 0, 5, 131069, 65535, 5, -458771, 65507, 4, 131070, 65535, 1048579, 131070, 5, 2, 65536, 65535, 1441794, 65538, 0, 655362)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
@@ -32,13 +40,15 @@ transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 3.95323, 3.3073, 1.4
 collision_layer = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.234718, 0.972064, 0, -0.972064, 0.234718, 0, 18.78, 0)
+transform = Transform3D(1, 0, 0, 0, -0.186919, 0.982375, 0, -0.982375, -0.186919, -11.7494, 14.8052, 2.63619)
+shadow_enabled = true
 
 [node name="Target" parent="." instance=ExtResource("3_2pkk5")]
 transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 1.84774, 1.59874, -4.98636)
 
 [node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_8pb8w")]
 transform = Transform3D(1, 0.000118759, -0.000443004, -0.000118055, 0.999999, 0.00159339, 0.000443192, -0.00159334, 0.999999, 0, 2.15617, 0)
+visible = false
 player = NodePath("../Player")
 min_distance = 5.0
 max_distance = 10.0
@@ -46,5 +56,15 @@ max_distance = 10.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hbjh1")
 
-[node name="AlbertoSmoke" parent="." instance=ExtResource("5_w0ito")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97381, 3.37544, 3.36423)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37338, 7.6302, 0)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_mu4kn")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37338, 7.6302, 0)
+script = ExtResource("6_ygdmn")
+tween_resource = SubResource("Resource_mkcfd")

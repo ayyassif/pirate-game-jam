@@ -16,6 +16,11 @@ func _physics_Update(delta: float):
 	raw_input = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))
 	if not raw_input:
 		Transitioned.emit(self, "Idle")
+	elif raw_input.x > 0:
+		sprite.flip_h = false
+	elif raw_input.x < 0:
+		sprite.flip_h = true
+	
 	var direction := (player.transform.basis * Vector3(raw_input.x, 0, raw_input.y)).normalized()
 	if direction:
 		player.velocity.x = direction.x * speed;
@@ -23,7 +28,6 @@ func _physics_Update(delta: float):
 	else:
 		player.velocity.x = 0.0
 		player.velocity.z = 0.0
-
 	player.move_and_slide()
 	
 	pass
