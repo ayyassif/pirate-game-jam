@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bod64h88yncu5"]
+[gd_scene load_steps=10 format=3 uid="uid://bod64h88yncu5"]
 
 [ext_resource type="MeshLibrary" uid="uid://btrw6baij85lo" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
 [ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
 [ext_resource type="PackedScene" path="res://Scenes/explosions/alberto_smoke.tscn" id="5_w0ito"]
+[ext_resource type="PackedScene" uid="uid://c8pg4ciyayyk4" path="res://Assets/LeoAssets/Blocks/Door.glb" id="6_lc4hy"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_2x31d"]
 
@@ -48,3 +49,6 @@ environment = SubResource("Environment_hbjh1")
 
 [node name="AlbertoSmoke" parent="." instance=ExtResource("5_w0ito")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97381, 3.37544, 3.36423)
+
+[node name="Door" parent="." instance=ExtResource("6_lc4hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99861, 2.73257, -0.0777445)
