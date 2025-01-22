@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpjhwatqodkqv"
-path="res://.godot/imported/BAM.png-d4984bdea5685cc5af8d608fabf9dfc2.ctex"
+uid="uid://cjqkk5v6cvlmn"
+path="res://.godot/imported/Anim_Bam_Walk_0003.png-2773859409cb6eecf69abbeb1a10e179.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LeoAssets/Characters/BAM.png"
-dest_files=["res://.godot/imported/BAM.png-d4984bdea5685cc5af8d608fabf9dfc2.ctex"]
+source_file="res://Assets/LeoAssets/Characters/Bam/Bam_Walk/Anim_Bam_Walk_0003.png"
+dest_files=["res://.godot/imported/Anim_Bam_Walk_0003.png-2773859409cb6eecf69abbeb1a10e179.ctex"]
 
 [params]
 
