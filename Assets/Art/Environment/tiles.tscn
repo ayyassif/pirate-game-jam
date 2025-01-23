@@ -1,9 +1,10 @@
-[gd_scene load_steps=51 format=4 uid="uid://crq2wo14vdyeo"]
+[gd_scene load_steps=50 format=4 uid="uid://crq2wo14vdyeo"]
 
 [ext_resource type="Texture2D" uid="uid://dw40mho72ites" path="res://Assets/LeoAssets/Blocks/TestCube_2_TestCube_1.png" id="1_yikjf"]
 [ext_resource type="Texture2D" uid="uid://45fkdeev6s1e" path="res://Assets/LeoAssets/Blocks/TestCube_2_TestCube_2.png" id="2_l0nvt"]
 [ext_resource type="Texture2D" uid="uid://cjuuthip45u32" path="res://Assets/LeoAssets/Blocks/Door_Door1_2.png" id="3_3y3tf"]
 [ext_resource type="Texture2D" uid="uid://bvnvmnhfflk5e" path="res://Assets/LeoAssets/Blocks/Door_Door1.png" id="4_4wevi"]
+[ext_resource type="Script" path="res://Assets/Art/Environment/spike_trap.gd" id="4_i8w3a"]
 [ext_resource type="Texture2D" uid="uid://ba4mya33448j" path="res://Assets/LeoAssets/Blocks/Door_TestCube_2.png" id="5_raiag"]
 [ext_resource type="Texture2D" uid="uid://bdr3uss11r7es" path="res://Assets/LeoAssets/Blocks/Ramp_Ramp1.png" id="6_di1fr"]
 [ext_resource type="Texture2D" uid="uid://diugy82lu05d8" path="res://Assets/LeoAssets/Blocks/SpikeTrap_TestCube_2_1.png" id="7_44wpl"]
@@ -299,11 +300,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4clox")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eosvy"]
-points = PackedVector3Array(0.272927, -0.0716, 0.33593, -0.272927, -0.0716, -0.33593, -0.293906, -0.0716, -0.325408, 0.261638, 0.217292, 0.261638, 0.325408, -0.0716, -0.293906, -0.323491, -0.0498585, 0.292175, -0.261638, 0.217292, -0.261638, 0.261638, 0.217292, -0.261638, -0.261638, 0.217292, 0.261638, -0.272927, -0.0716, 0.33593, 0.335366, -0.0608642, 0.272468, -0.335378, -0.0608689, -0.272478, 0.260854, -0.0498864, -0.334029, 0.334035, -0.0498885, -0.260859, -0.33593, -0.0716, 0.272927, -0.260859, -0.0498885, 0.334035, -0.334029, -0.0498864, 0.260854, 0.272927, -0.0716, -0.33593, -0.260859, -0.0498885, -0.334035, 0.260854, -0.0498864, 0.334029, 0.325408, -0.0716, 0.293906, -0.325408, -0.0716, -0.293906, -0.334035, -0.0498885, -0.260859, 0.334029, -0.0498864, 0.260854, 0.33593, -0.0716, -0.272927, 0.302263, -0.0392703, 0.312645, 0.302263, -0.0392703, -0.312645, -0.292201, -0.049869, 0.323519, -0.312654, -0.0392735, -0.302272, 0.33593, -0.0716, 0.272927, -0.33593, -0.0716, -0.272927, -0.292201, -0.049869, -0.323519)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8uvj0"]
-points = PackedVector3Array(0.309452, 0.0415402, 0.373911, -0.374238, -0.0387317, -0.443632, -0.41584, -0.0387317, -0.41584, 0.41584, -0.0387317, 0.41584, -0.41584, -0.0387317, 0.41584, 0.41584, -0.0387317, -0.41584, -0.359051, 0.0413328, -0.333422, 0.359051, 0.0413328, -0.333422, -0.373912, 0.0415403, 0.309452, 0.277083, 0.029246, -0.409012, 0.409009, 0.0292458, 0.277081, -0.277083, 0.029246, 0.409012, -0.409009, 0.0292458, -0.277081, -0.443632, -0.0387317, 0.374238, 0.374238, -0.0387317, 0.443632, 0.443632, -0.0387317, -0.374238, -0.281451, 0.0412467, -0.383819, 0.409009, 0.0292458, -0.277081, -0.443632, -0.0387317, -0.374238, -0.374238, -0.0387317, 0.443632, 0.374238, -0.0387317, -0.443632, 0.443632, -0.0387317, 0.374238, 0.277083, 0.029246, 0.409012, -0.409009, 0.0292458, 0.277081, -0.277083, 0.029246, -0.409012, 0.373912, 0.0415403, 0.309452, -0.309452, 0.0415402, 0.373911, 0.309452, 0.0415402, -0.373911, 0.383815, 0.0412462, -0.281448, -0.383815, 0.0412462, -0.281448, 0.398474, -0.0104206, 0.398474, -0.398474, -0.0104206, 0.398474)
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmmb8"]
+size = Vector3(1, 0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grofp"]
 resource_name = "Material.003"
@@ -529,9 +527,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lytnr")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nmu3r"]
-size = Vector3(0.41, 0.98, 0.13)
-
 [node name="Tiles" type="Node3D"]
 
 [node name="TestCube_2_12" type="Node3D" parent="."]
@@ -578,26 +573,24 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_f72mg")
 
 [node name="SpikeTrap" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.463249, 0)
+script = ExtResource("4_i8w3a")
 
 [node name="TestTrap_1_003" type="MeshInstance3D" parent="SpikeTrap"]
 mesh = SubResource("ArrayMesh_rxchi")
 skeleton = NodePath("")
 
 [node name="TestTrap_1_004" type="MeshInstance3D" parent="SpikeTrap/TestTrap_1_003"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0873365, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104679, 0)
 mesh = SubResource("ArrayMesh_g3l0p")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SpikeTrap/TestTrap_1_003/TestTrap_1_004"]
+[node name="Area3D" type="Area3D" parent="SpikeTrap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463249, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeTrap/TestTrap_1_003/TestTrap_1_004/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_eosvy")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SpikeTrap/TestTrap_1_003"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeTrap/TestTrap_1_003/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_8uvj0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeTrap/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
+shape = SubResource("BoxShape3D_vmmb8")
 
 [node name="TestCube_4_12" type="Node3D" parent="."]
 visible = false
@@ -626,6 +619,7 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_ydlet")
 
 [node name="Door" type="Node3D" parent="."]
+visible = false
 
 [node name="Cylinder" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(0.0602732, 0, 0, 0, 0.0602732, 0, 0, 0, 0.0602732, -0.32936, 0.602986, 0)
@@ -637,13 +631,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26537, 2.39961, -8.61831)
 mesh = SubResource("ArrayMesh_qteyh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door/Cylinder"]
-transform = Transform3D(16.5911, 0, 0, 0, 16.5911, 0, 0, 0, 16.5911, 5.46445, -10.0042, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Cylinder/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0, -0.45)
-shape = SubResource("BoxShape3D_nmu3r")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door/Cylinder/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0, 0.41)
-shape = SubResource("BoxShape3D_nmu3r")
+[connection signal="body_entered" from="SpikeTrap/Area3D" to="SpikeTrap" method="_on_area_3d_body_entered"]

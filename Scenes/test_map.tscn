@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bod64h88yncu5"]
+[gd_scene load_steps=6 format=3 uid="uid://bod64h88yncu5"]
 
 [ext_resource type="MeshLibrary" uid="uid://cjo1g1pj0adi2" path="res://Assets/Art/Environment/tiles.tres" id="1_61fe2"]
 [ext_resource type="PackedScene" uid="uid://dt5bldrc0mkj2" path="res://Scenes/player.tscn" id="2_oulgh"]
 [ext_resource type="PackedScene" uid="uid://dqg6oe4asg63x" path="res://Scenes/target.tscn" id="3_2pkk5"]
-[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="4_8pb8w"]
 [ext_resource type="PackedScene" uid="uid://cfr73bq3klcr0" path="res://Scenes/enemies/Ranger.tscn" id="6_wqngv"]
 [ext_resource type="Environment" uid="uid://b55dhcx74sqkj" path="res://Assets/Art/Environment/new_environment.tres" id="8_xx2vp"]
 
@@ -13,12 +12,12 @@
 mesh_library = ExtResource("1_61fe2")
 collision_mask = 3
 data = {
-"cells": PackedInt32Array(65550, 0, 4, 131086, 65533, 4, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65534, 65535, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 0, 65535, 0, 65534, 0, 0, 131069, 65534, 1, 131070, 65534, 1, 131071, 65534, 1, 65536, 65534, 1, 131069, 1, 5, 131068, 1, 6, 131069, 0, 5, 131069, 65535, 5, -458771, 65507, 4, 131070, 65535, 1048579, 131070, 5, 2, 65536, 65535, 1441794, 65538, 0, 655362, 131071, 0, 2)
+"cells": PackedInt32Array(65550, 0, 4, 131086, 65533, 4, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65535, 0, 65534, 65535, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 0, 65535, 0, 65534, 0, 0, 131069, 65534, 1, 131070, 65534, 1, 131071, 65534, 1, 131069, 1, 5, 131068, 1, 6, 131069, 0, 5, 131069, 65535, 5, -458771, 65507, 4, 131070, 65535, 1048579, 131070, 5, 2, 65536, 65535, 1441794, 65538, 0, 655362, 131071, 0, 2, 65536, 65534, 1, 65537, 0, 4)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_oulgh")]
-transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 1.49847, 2.64308, 1.26163)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49847, 2.8861, -0.524496)
 collision_layer = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -27,13 +26,6 @@ shadow_enabled = true
 
 [node name="Target" parent="." instance=ExtResource("3_2pkk5")]
 transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 1.84774, 1.59874, -4.98636)
-
-[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_8pb8w")]
-transform = Transform3D(1, 0.000118759, -0.000443004, -0.000118055, 0.999999, 0.00159339, 0.000443192, -0.00159334, 0.999999, 0, 2.15617, 0)
-visible = false
-player = NodePath("../Player")
-min_distance = 5.0
-max_distance = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_xx2vp")

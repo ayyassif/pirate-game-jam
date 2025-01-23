@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://dt5bldrc0mkj2"]
+[gd_scene load_steps=54 format=3 uid="uid://dt5bldrc0mkj2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
+[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="2_sbe73"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="4_ne872"]
 [ext_resource type="Script" path="res://Scripts/BombForms/BombStateMachine.gd" id="5_aiy7p"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
@@ -267,6 +268,9 @@ animations = [{
 floor_max_angle = 0.872665
 script = ExtResource("1_8ybj4")
 
+[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sbe73")]
+player = NodePath("..")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0110601, -0.00737542, -0.000508547)
 shape = SubResource("CapsuleShape3D_fgfao")
@@ -303,7 +307,7 @@ script = ExtResource("7_80yk5")
 script = ExtResource("8_jbfcf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.997002, 0, 0, 0, 0.997002, 0, 0, 0, 0.997002, 0, -1.16764, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16764, 0)
 gi_mode = 2
 offset = Vector2(0, 128.07)
 billboard = 2
