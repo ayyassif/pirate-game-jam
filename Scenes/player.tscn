@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dt5bldrc0mkj2"]
+[gd_scene load_steps=54 format=3 uid="uid://dt5bldrc0mkj2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://Scripts/BombForms/BombStateMachine.gd" id="5_aiy7p"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
 [ext_resource type="Script" path="res://Scripts/States/Attack.gd" id="5_n737a"]
-[ext_resource type="PackedScene" uid="uid://cpqegtqp1j6v2" path="res://Scenes/explosions/bamExplosion.tscn" id="6_0fcm2"]
+[ext_resource type="PackedScene" uid="uid://cpqegtqp1j6v2" path="res://Scenes/explosions/BamExplosion.tscn" id="6_0fcm2"]
 [ext_resource type="PackedScene" uid="uid://kwnstv2knt7h" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
 [ext_resource type="Texture2D" uid="uid://dsq48dwnqxfn1" path="res://Assets/kenney_toon-characters-1/Female adventurer/Tilesheet/character_femaleAdventurer_sheetHD.png" id="6_dgy37"]
 [ext_resource type="Script" path="res://Scripts/BombForms/Bang.gd" id="7_80yk5"]
 [ext_resource type="Texture2D" uid="uid://b2gcjdpp3hran" path="res://Assets/kenney_toon-characters-1/Male adventurer/Tilesheet/character_maleAdventurer_sheetHD.png" id="7_b1645"]
+[ext_resource type="PackedScene" uid="uid://blqgn8pulr82h" path="res://Scenes/explosions/AlbertoSmoke.tscn" id="8_78w23"]
 [ext_resource type="Script" path="res://Scripts/BombForms/Alberto.gd" id="8_jbfcf"]
 [ext_resource type="Script" path="res://Scripts/BombForms/Bam.gd" id="9_xnlhq"]
 [ext_resource type="Texture2D" uid="uid://dbves7tn6h0fx" path="res://Assets/LeoAssets/Characters/Bam/Bam_Idle/Anim_Bam_Idle_0000.png" id="13_4vknn"]
@@ -298,6 +299,7 @@ script = ExtResource("5_aiy7p")
 initial_bomb = NodePath("Bam")
 player = NodePath("..")
 bam_explosion = ExtResource("6_0fcm2")
+alberto_smoke = ExtResource("8_78w23")
 
 [node name="Bam" type="Node" parent="BombMachine"]
 script = ExtResource("9_xnlhq")

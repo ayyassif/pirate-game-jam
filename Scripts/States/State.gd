@@ -21,4 +21,7 @@ func _physics_Update(delta: float):
 
 func detectAttack():
 	if Input.is_action_just_pressed("LeftClick"):
+		player.velocity.x = 0.0
+		player.velocity.z = 0.0
+		player.move_and_slide()
 		Transitioned.emit(self, "Attack")
