@@ -29,7 +29,7 @@ import/blender/enabled=false
 
 [global_group]
 
-Target=""
+Enemies=""
 
 [input]
 

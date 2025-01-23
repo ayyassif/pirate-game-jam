@@ -11,11 +11,12 @@ func _ready() -> void:
 	queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body.name)
 	if body.name == "Player":
+		body.isInSmoke = true
 		world_environment.environment.volumetric_fog_density = fog_density
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
+		body.isInSmoke = false
 		world_environment.environment.volumetric_fog_density = 0

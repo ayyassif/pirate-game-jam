@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dt5bldrc0mkj2"]
+[gd_scene load_steps=53 format=3 uid="uid://dt5bldrc0mkj2"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
@@ -32,9 +32,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgfao"]
 height = 1.6732
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_emwxm"]
-radius = 3.68977
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m22di"]
 atlas = ExtResource("7_b1645")
@@ -274,11 +271,6 @@ script = ExtResource("1_8ybj4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0110601, -0.00737542, -0.000508547)
 shape = SubResource("CapsuleShape3D_fgfao")
 
-[node name="ExploisionArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ExploisionArea"]
-shape = SubResource("CylinderShape3D_emwxm")
-
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "BombMachine", "sprite", "player") instance=ExtResource("6_a4wi6")]
 initial_state = NodePath("Idle")
 BombMachine = NodePath("../BombMachine")
@@ -317,5 +309,3 @@ offset = Vector2(0, 128.07)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_5w7ow")
 animation = &"BamWalking"
-
-[connection signal="body_entered" from="ExploisionArea" to="." method="_on_exploision_area_body_entered"]
