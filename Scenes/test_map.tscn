@@ -18,7 +18,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_oulgh")]
-transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0.932231, 3.3073, 1.49511)
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 1.49847, 2.64308, 1.26163)
 collision_layer = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
