@@ -6,6 +6,8 @@ enum states{WANDER, ATTACK}
 @export var health:float = 10
 @export var initial_state: states = states.WANDER
 
+@onready var camera:Camera3D = get_tree().get_first_node_in_group("Camera")
+
 var current_state: states
 var isAlive: bool = true
 
@@ -21,24 +23,26 @@ func stateMachine(wander: Callable, attack: Callable):
 		states.ATTACK:
 			attack.call()
 
+func _process(delta: float) -> void:
+	print(name)
+	print(position - camera.position)
+	stateMachine(proccessWander, proccessAttack)
+
+func _physics_process(delta: float) -> void:
+	stateMachine(physicsProccessWander, physicsProccessAttack)
+
 func proccessWander():
 	pass
 
-func proccessAttack():
-	pass
-	
 func physicsProccessWander():
-	
+	pass
+
+func proccessAttack():
 	pass
 
 func physicsProccessAttack():
 	pass
 
-func _process(delta: float) -> void:
-	stateMachine(proccessWander, proccessAttack)
-
-func _physics_process(delta: float) -> void:
-	stateMachine(physicsProccessWander, physicsProccessAttack)
 
 func takeDamage(damage: float):
 	health -= damage

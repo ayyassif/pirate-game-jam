@@ -161,6 +161,7 @@ height = 1.673
 size = Vector3(4, 1, 3)
 
 [node name="Ranger" type="CharacterBody3D" groups=["Enemies"]]
+collision_layer = 4
 script = ExtResource("1_x6k5o")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -188,4 +189,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("BoxShape3D_0a367")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

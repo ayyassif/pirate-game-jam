@@ -10,6 +10,9 @@ var target: CharacterBody3D
 
 @export var speed:float = 2
 
+func _ready() -> void:
+	animated_sprite_3d.play("Wander")
+
 func proccessWander():
 	var forward_direction = transform.basis.x.normalized()
 	velocity = forward_direction * speed
@@ -33,9 +36,6 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 		target = body
 		if current_state == states.WANDER:
 			switch()
-
-func _on_detection_area_body_exited(body: Node3D) -> void:
-	pass # Replace with function body.
 
 func switch():
 	if current_state == states.WANDER:

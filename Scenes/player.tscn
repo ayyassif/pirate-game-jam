@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ybj4"]
 [ext_resource type="Texture2D" uid="uid://dy228kxh0oq6m" path="res://Assets/kenney_toon-characters-1/Robot/Tilesheet/character_robot_sheetHD.png" id="1_61eog"]
-[ext_resource type="PackedScene" uid="uid://cedigvq1ghfhc" path="res://Scenes/camera.tscn" id="2_sbe73"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.gd" id="4_ne872"]
 [ext_resource type="Script" path="res://Scripts/BombForms/BombStateMachine.gd" id="5_aiy7p"]
 [ext_resource type="Script" path="res://Scripts/States/Walking.gd" id="5_deyuq"]
 [ext_resource type="Script" path="res://Scripts/States/Attack.gd" id="5_n737a"]
-[ext_resource type="PackedScene" uid="uid://cpqegtqp1j6v2" path="res://Scenes/explosions/BamExplosion.tscn" id="6_0fcm2"]
+[ext_resource type="PackedScene" uid="uid://cpqegtqp1j6v2" path="res://Scenes/explosions/bamExplosion.tscn" id="6_0fcm2"]
 [ext_resource type="PackedScene" uid="uid://kwnstv2knt7h" path="res://Scenes/state_machine.tscn" id="6_a4wi6"]
 [ext_resource type="Texture2D" uid="uid://dsq48dwnqxfn1" path="res://Assets/kenney_toon-characters-1/Female adventurer/Tilesheet/character_femaleAdventurer_sheetHD.png" id="6_dgy37"]
 [ext_resource type="Script" path="res://Scripts/BombForms/Bang.gd" id="7_80yk5"]
@@ -264,12 +263,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qpwd0"]
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 floor_max_angle = 0.872665
 script = ExtResource("1_8ybj4")
-
-[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sbe73")]
-player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0110601, -0.00737542, -0.000508547)
@@ -313,3 +311,12 @@ offset = Vector2(0, 128.07)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_5w7ow")
 animation = &"BamWalking"
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.859585, 0.510993, 0, -0.510993, 0.859585, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+shape = SubResource("SphereShape3D_qpwd0")
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" groups=["Camera"]]
