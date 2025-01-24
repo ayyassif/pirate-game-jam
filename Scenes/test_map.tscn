@@ -31,4 +31,4 @@ transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 1.84774, 1.59874, -4
 environment = ExtResource("8_xx2vp")
 
 [node name="Ranger" parent="." instance=ExtResource("6_wqngv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.09, 2.88849, 9.24146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09, 2.88849, 9.69379)
