@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Enemy
 
 enum states{WANDER, ATTACK}
+enum direction{LEFT, RIGHT}
 
 @export var health:float = 10
 @export var initial_state: states = states.WANDER
@@ -9,6 +10,7 @@ enum states{WANDER, ATTACK}
 @onready var camera:Camera3D = get_tree().get_first_node_in_group("Camera")
 
 var current_state: states
+var current_direction: direction = direction.LEFT
 var isAlive: bool = true
 
 func _ready() -> void:
@@ -24,8 +26,6 @@ func stateMachine(wander: Callable, attack: Callable):
 			attack.call()
 
 func _process(delta: float) -> void:
-	print(name)
-	print(position - camera.position)
 	stateMachine(proccessWander, proccessAttack)
 
 func _physics_process(delta: float) -> void:
