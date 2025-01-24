@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfr73bq3klcr0"]
+[gd_scene load_steps=26 format=3 uid="uid://cfr73bq3klcr0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/ranger.gd" id="1_x6k5o"]
 [ext_resource type="Texture2D" uid="uid://bf6n46d70bmae" path="res://Assets/GandalfHardcore Archer/GandalfHardcore Archer red sheet.png" id="2_r4fx4"]
+[ext_resource type="PackedScene" uid="uid://4lshe5sn44dc" path="res://Scenes/bullet.tscn" id="2_xe8qi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vp0ud"]
 atlas = ExtResource("2_r4fx4")
@@ -91,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3ph1p")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -163,6 +164,7 @@ size = Vector3(4, 1, 3)
 [node name="Ranger" type="CharacterBody3D" groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_x6k5o")
+bullet = ExtResource("2_xe8qi")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(3.16, 0, 0, 0, 3.16, 0, 0, 0, 3.16, 0, 0.19, 0)
@@ -170,7 +172,7 @@ offset = Vector2(6.58, 0)
 billboard = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_w8qql")
-animation = &"Wander"
+animation = &"Attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qqafu")
@@ -188,4 +190,8 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("BoxShape3D_0a367")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

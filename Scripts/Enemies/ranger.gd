@@ -4,11 +4,12 @@ extends Enemy
 @onready var down_ray: RayCast3D = $DownRay
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var detection_area: Area3D = $DetectionArea
+@onready var timer: Timer = $Timer
 
-var isDrawing: bool = false
 var target: CharacterBody3D
 
-@export var speed:float = 2
+@export var bullet: PackedScene
+@export var speed: float = 2
 
 func _ready() -> void:
 	animated_sprite_3d.play("Wander")
@@ -46,6 +47,7 @@ func physicsProccessAttack():
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player" and body.isInSmoke == false:
 		isDrawing = true
+		timer.start()
 		target = body
 		if current_state == states.WANDER:
 			switch()
@@ -58,3 +60,10 @@ func switch():
 		animated_sprite_3d.play("Wander")
 		current_state = states.WANDER
 		target = null
+
+func _on_timer_timeout() -> void:
+	animated_sprite_3d.play("Attack")
+	var instance: Node3D = bullet.instantiate()
+	instance.global_position = global_position
+	instance.look_at(target.position)
+	add_child(instance)

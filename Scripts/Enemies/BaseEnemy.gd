@@ -12,6 +12,7 @@ enum direction{LEFT, RIGHT}
 var current_state: states
 var current_direction: direction = direction.LEFT
 var isAlive: bool = true
+var isDrawing: bool = false
 
 func _ready() -> void:
 	current_state = initial_state
